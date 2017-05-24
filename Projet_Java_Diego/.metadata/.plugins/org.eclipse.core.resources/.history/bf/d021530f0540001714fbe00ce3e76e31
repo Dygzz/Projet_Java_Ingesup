@@ -1,0 +1,100 @@
+
+import java.util.Scanner;
+
+public class Mots {
+	int tentative = 1;
+	int nombreAleatoire = (int) (Math.random() * 10.0D);
+	Scanner Mot;
+	String[] dictionnaire;
+
+	public Mots() {
+		this.Mot = new Scanner(System.in);
+		this.dictionnaire = new String[] { "PAPIER", "MANGER", "ALGERIE", "CASQUETTE", "STYLO", "TACOS", "ORDINATEUR",
+				"MACHINE", "ELEPHANT", "TRAPEZE" };
+	}
+
+	public void melangeTableau(String[] tab) {
+		String temp;
+		for (int i = tab.length -1; i > 0; --i) {
+			int j = (int) (Math.random() * (double) (i + 1));
+			temp = tab[i];
+			tab[i] = tab[j];
+			tab[j] = temp;
+		}
+
+	}
+
+	public void afficheTableau(String[] tab) {
+		for (int i = 0; i < tab.length; ++i) {
+			System.out.print(tab[i]);
+		}
+
+	}
+
+	public void motUnePossibilite() {
+		String motInconnue = this.dictionnaire[this.nombreAleatoire];
+		String[] lettre = motInconnue.split("");
+		this.melangeTableau(lettre);
+		System.out.println("Essaye de trouver le mot avec ces lettres: ");
+		this.afficheTableau(lettre);
+		System.out.println("");
+		String proposer = this.Mot.nextLine();
+		if (proposer.equals(motInconnue)) {
+			System.out.println("Bien Jouer. Vous avez gagné");
+		} else {
+			System.out.println("tu as perdue !!!! Le mot était " + motInconnue);
+		}
+
+	}
+	
+	public void motInfiniteDePossiilite(){
+		String motInconnue = this.dictionnaire[this.nombreAleatoire];
+		String[] lettre = motInconnue.split("");
+		this.melangeTableau(lettre);
+		System.out.println("Essaye de trouver le mot avec ces lettres: ");
+		this.afficheTableau(lettre);
+		System.out.println("");
+		String proposer = this.Mot.nextLine();
+		while(!proposer.equals(motInconnue)){
+			this.tentative ++;
+			System.out.println("Tu as faux!!!! Retante ta chance les lettres sont: ");
+			this.afficheTableau(lettre);
+			System.out.println("");
+			proposer = this.Mot.nextLine();
+		}
+		if (proposer.equals(motInconnue)) {
+			System.out.println("Bien Jouer. Vous avez gagné en " + tentative + " tentative");
+		}
+	}
+	
+	public void motChoixDePossiilite(){
+		
+		System.out.println("Choisissez le nombre de tentative que vous voulez");
+		int tentatives = this.Mot.nextInt();
+		String motInconnue = this.dictionnaire[this.nombreAleatoire];
+		String[] lettre = motInconnue.split("");
+		this.melangeTableau(lettre);
+		System.out.println("Essaye de trouver le mot avec ces lettres: ");
+		this.afficheTableau(lettre);
+		System.out.println("");
+		String proposer = this.Mot.nextLine();
+		while(!proposer.equals(motInconnue)){
+			if (tentatives == this.tentative + 1) {
+				System.out.println("Vous avez perdue. La réponce était " + motInconnue);
+				return;
+			}
+			this.tentative ++;
+			System.out.println("Tu as faux!!!! Retante ta chance les lettres sont: ");
+			this.afficheTableau(lettre);
+			System.out.println("");
+			proposer = this.Mot.nextLine();
+		}
+		if (proposer.equals(motInconnue)) {
+			System.out.println("Bien Jouer. Vous avez gagné en " + tentative + " tentative");
+		}
+	}
+	
+	
+	
+	
+}

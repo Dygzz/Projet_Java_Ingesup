@@ -1,0 +1,93 @@
+import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.Random;
+
+public class Main {
+	public static void main(String[] args) {
+		Jeu();
+	}
+
+	public static void Jeu() {
+		System.out.println(
+				"Salut à quelle jeu voulait vous jouez: taper 1 pour Numéros Magique et taper 2 pour le mot magique ");
+		Scanner nombre = new Scanner(System.in);
+		int choix = nombre.nextInt();
+		if (choix == 1) {
+			Numero rejoue = new Numero();
+			System.out.println("Quel mode de jeux voulait vous choisir");
+			System.out.println("1 pour un nombre infini de possibilité");
+			System.out.println("2 pour une seul chance");
+			System.out.println("3 pour choisir son nombre de tentative");
+			int possibilite = nombre.nextInt();
+			if (possibilite == 1) {
+				rejoue.infiniteDePossibilite();
+			} else if (possibilite == 2) {
+				rejoue.unePossibilite();
+			} else if (possibilite == 3) {
+				rejoue.choixDePossibilite();
+			}
+		} else if (choix == 2) {
+			Mots rejoue1 = new Mots();
+			//rejoue1.motUnePossibilite();
+			String []tabMot = {"ALLO", "BONJOUR","MANGER","BOIRE"};
+	        Random rand = new Random();
+	        int nombreAleatoire;
+	        String mot;
+	        Scanner clavier = new Scanner(System.in);
+	        
+	        nombreAleatoire = rand.nextInt(tabMot.length);
+	        mot = tabMot[nombreAleatoire];
+	        
+	        String motVeritable; // = mot de base
+	        String lettre = "AZERTYUIOPQSDFGHJKLMWXCVBN";
+	        
+	        int max;
+	        int stop = 0;
+	        int min = 0;
+	        int ajoutdelettre = 3;
+	      
+	        
+	        
+	      
+	        
+	        
+	        ArrayList<Integer> lettreprise = new ArrayList<Integer>();
+	        boolean co = true;
+	        while (co){
+	            nombreAleatoire = rand.nextInt(mot.length());
+	            if (!(lettreprise.contains(nombreAleatoire))){
+	                lettreprise.add(nombreAleatoire);
+	                System.out.println(mot.charAt(nombreAleatoire));
+	                stop++;
+	            }
+	            if (stop == mot.length()){	
+	                co = true;
+	                System.out.println("qu'elle est le mot magique parmi ces lettres");
+	                 ;
+	            }
+	        }
+	            System.out.println("Quel est le mot magique parmi ces lettres :");
+				   motVeritable = clavier.next();
+
+				   if(motVeritable.equals(tabMot)){
+					  System.out.println("vous avez trouvez le bon mot Magique:" + tabMot);
+					  motVeritable = clavier.next();
+				   }
+					
+				   else {
+				   System.out.println("vous n'avez pas trouvez le bon mot Magique");
+		
+				
+	        }
+		}
+
+		System.out.println("Vous voulez rejoué 1 pour Oui et 2 pour Non");
+		int rejoue2 = nombre.nextInt();
+		if (rejoue2 == 1) {
+			Jeu();
+		} else if (rejoue2 == 2) {
+			System.out.println("Merci d\'avoir jouer. Mauvaise journée");
+		}
+
+	}
+}

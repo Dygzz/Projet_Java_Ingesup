@@ -1,0 +1,20 @@
+INDEX VERSION 1.129+D:\Projet_Java_Diego\.metadata\.plugins\org.eclipse.jdt.core
+2014324170.index
+3615260227.index
+3470302102.index
+3412864448.index
+2182437529.index
+345660345.index
+3542016833.index
+2039379942.index
+4044157108.index
+3855572520.index
+2162183667.index
+1961892921.index
+1740801033.index
+1898781854.index
+2639183168.index
+1697714492.index
+1378345484.index
+2802102247.index
+172691359.index
